@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap"
+    rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
+  </script>
+
+  <style type="text/tailwindcss">
+    @import "tailwindcss"; 
+    /* Esto carga todo el framework */
+
+    /* Variables de configuración */
+    @theme {
+      --font-sans: "Inclusive Sans", ui-sans-serif, system-ui, sans-serif;
+      --color-brand: #ff4500;
+    }
+
+    @layer base {
+      :root {
+        @apply text-sm;
+        line-height: 1.5;
+      }
+      p { @apply mb-1 }
+
+      button {
+        @apply rounded-md bg-slate-200 border-1 border-slate-400 px-4 py-1 my-1 text-sm cursor-pointer disabled:opacity-50
+      }      
+      
+      blockquote {
+        @apply mx-8 p-2 bg-slate-100
+      }
+
+      ol { @apply list-decimal list-outside ml-6 mb-4 }
+
+      ul { @apply list-[circle] list-outside ml-6 mb-4}
+      
+      kbd, code, a { @apply text-blue-800 }
+
+      a { @apply border-b-1 }
+
+      input, select { @apply border-1 px-2 }
+
+      hr { @apply my-3 }
+
+      td, th { @apply pl-1.5}
+    }
+  </style>
+
+  <link rel="shortcut icon" href="./img/rt.ico" type="image/svg">
+  <title>Diseno Fisico</title>
+</head>
+
+<body class="container mx-auto w-5/6 pb-10">
+  <header>
+    <h1 class="font-bold text-2xl text-red-700 mb-4">Ejercicio 1: Diseño Físico</h1>
+  </header>
+  <h2 class="font-bold text-xl text-slate-600 mb-4">Creación de Bases de Datos en <strong>Supabase</strong>.</h2>
+  <p>1.	Crear un nuevo proyecto en <strong>Supabase</strong> y darle por nombre <strong>nomina</strong>. Crear las siguientes tablas en el proyecto, con los campos que se indican a continuación.</p>
+  <p>Asigna el tipo de datos que consideres, excepto para el campo <b>estado_civil</b> que será un tipo <b>enum</b> con los siguientes valores:  <b>Soltero, Casado, Divorciado, Viudo, Otro</b>.</p>
+  <ul>
+    <li>Las <b>claves primarias (pk)</b> de cada tabla, se pueden apreciar en negritas y subrayadas.</li>
+    <li>Las <b>claves foráneas (fk)</b>, con un subrayado discontinuo.</li> 
+  </ul>
+  <table width="100%">
+    <tr>
+        <th width="25%" class="border border-slate-700">empleado</th>
+        <th>&nbsp;</th>
+        <th width="25%" class="border border border-slate-700">cargo</th>
+        <th>&nbsp;</th>
+        <th width="25%" class="border border-slate-700">departamento</th>
+    </tr>
+    <tr>
+        <td class="border border-slate-700">
+            <b><u>pk_empleado</u></b><br/>
+            apellido<br/>
+            nombre<br/>
+            sexo<br/>
+            fecha_nacimiento<br/>
+            estado_civil<br/>
+            hijos<br/>
+            <span class="underline decoration-dashed">fk_cargo</span><br/>
+            <span class="underline decoration-dashed">fk_departamento</span><br/>
+            fecha_contrato<br/>
+            sueldo
+        </td>
+        <th>&nbsp;</th>
+        <td class="border border-slate-700">
+            <b><u>pk_cargo</u></b><br/>
+            cargo
+        </td>
+        <th>&nbsp;</th>
+        <td class="border border-slate-700">
+            <b><u>pk_departamento</u></b><br/>
+            departamento
+        </td>
+    </tr>
+  </table>
+
+  <ol start="2" class="mt-8">
+    <li><b>Crear las relaciones</b> entre las tablas utilizando las <b>foreign keys</b> (fk)</li>
+    <li>Inserta los registros de las tablas <b>cargo</b> y <b>departamento</b></li>
+    <li>Los registros de la tabla <b>empleado</b> los podrás encontrar en el archivo <a download="empleados.csv" href="empleados_nomina.sql" title="Datos Empleados">empleados_nomina.sql</a>. </li>
+  </ol>
+  <p>Deberás comenzar por las tablas <b>departamento</b> y <b>cargo</b>. <em>Recuerda la integridad referencial</em>.</p>
+
+  <h2 class="font-bold text-xl text-slate-600 mt-8 mb-4">Tabla de Cargos</h2>
+  <table width="80%" class="text-center border border-slate-700 mt-8">
+    <tr>
+      <th width="30%" class="border border border-slate-700">pk_cargo</th>
+      <th class="border border-slate-700">cargo</th>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">1</td>
+      <td class="border border-slate-700">Analista</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">2</td>
+      <td class="border border-slate-700">Asistente</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">3</td>
+      <td class="border border-slate-700">Ejecutivo</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">4</td>
+      <td class="border border-slate-700">Gerente</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">5</td>
+      <td class="border border-slate-700">Oficinista</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">6</td>
+      <td class="border border-slate-700">Programador</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">7</td>
+      <td class="border border-slate-700">Secretaria</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">8</td>
+      <td class="border border-slate-700">Vice Presidente</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">9</td>
+      <td class="border border-slate-700">Técnico</td>
+    </tr>                                
+    <tr>
+      <td class="border border border-slate-700">10</td>
+      <td class="border border-slate-700">Especialista</td>
+    </tr>     
+  </table>
+
+  <h2 class="font-bold text-xl text-slate-600 mt-8 mb-4">Tabla de Departamentos</h2>
+  <table width="80%" class="text-center border border-slate-700 mt-8">
+    <tr>
+      <th width="30%" class="border border border-slate-700">pk-departamento</th>
+      <th class="border border-slate-700">departamento</th>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">1</td>
+      <td class="border border-slate-700">Administración</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">2</td>
+      <td class="border border-slate-700">Compras</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">3</td>
+      <td class="border border-slate-700">Contabilidad</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">4</td>
+      <td class="border border-slate-700">Informática</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">5</td>
+      <td class="border border-slate-700">Recursos Humanos</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">6</td>
+      <td class="border border-slate-700">Ventas</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">7</td>
+      <td class="border border-slate-700">Marketing</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">8</td>
+      <td class="border border-slate-700">Finanzas</td>
+    </tr>
+    <tr>
+      <td class="border border border-slate-700">9</td>
+      <td class="border border-slate-700">Recepción</td>
+    </tr>                                  
+  </table>  
+
+
+</body>
+
+</html>
