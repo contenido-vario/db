@@ -65,6 +65,7 @@
   <h2 class="font-bold text-xl text-slate-600 mb-4">Creación de Bases de Datos en <strong>Supabase</strong>.</h2>
   <p>1.	Crear un nuevo proyecto en <strong>Supabase</strong> y darle por nombre <strong>nomina</strong>. Crear las siguientes tablas en el proyecto, con los campos que se indican a continuación.</p>
   <p>Asigna el tipo de datos que consideres, excepto para el campo <b>estado_civil</b> que será un tipo <b>enum</b> con los siguientes valores:  <b>Soltero, Casado, Divorciado, Viudo, Otro</b>.</p>
+  <p><code>ALTER TABLE empleado ADD CONSTRAINT estados_civiles CHECK ( estado_civil IN ('Soltero', 'Casado', 'Divorciado', 'Viudo', 'Otro'));</code></p>
   <ul>
     <li>Las <b>claves primarias (pk)</b> de cada tabla, se pueden apreciar en negritas y subrayadas.</li>
     <li>Las <b>claves foráneas (fk)</b>, con un subrayado discontinuo.</li> 
