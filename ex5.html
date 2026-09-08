@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap"
+    rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
+  </script>
+
+  <style type="text/tailwindcss">
+    @import "tailwindcss"; 
+    /* Esto carga todo el framework */
+
+    /* Variables de configuración */
+    @theme {
+      --font-sans: "Inclusive Sans", ui-sans-serif, system-ui, sans-serif;
+      --color-brand: #ff4500;
+    }
+
+    @layer base {
+      :root {
+        @apply text-sm;
+        line-height: 1.5;
+      }
+      p { @apply mb-1 }
+
+      button {
+        @apply rounded-md bg-slate-200 border-1 border-slate-400 px-4 py-1 my-1 text-sm cursor-pointer disabled:opacity-50
+      }      
+      
+      blockquote {
+        @apply mx-8 p-2 bg-slate-100
+      }
+
+      ol { @apply list-decimal list-outside ml-6 mb-4 }
+
+      ul { @apply list-[circle] list-outside ml-6 mb-4}
+      
+      kbd, code, a { @apply text-blue-800 }
+
+      a { @apply border-b-1 }
+
+      input, select { @apply border-1 px-2 }
+
+      hr { @apply my-3 }
+
+      td, th { @apply border border-b-blue-200 pl-1.5}
+    }
+  </style>
+
+  <link rel="shortcut icon" href="./img/rt.ico" type="image/svg">
+  <title>JOIN</title>
+</head>
+
+<body class="container mx-auto w-5/6 pb-10">
+  <header>
+    <h1 class="font-bold text-2xl text-red-700 mb-4">Realización de consultas multitabla</h1>
+  </header>
+  <h2 class="mt-4 mb-1 text-lg text-slate-400 font-bold">
+    Referencia: <a target="_blank" rel="noreferrer noopener"
+            href="https://www.w3schools.com/postgresql/postgresql_joins.php">
+    SQL JOINS</a>
+  </h2>
+  <h3 class="text-lg text-red-700">Composición interna (<a target="_blank" rel="noreferrer noopener"href="https://www.w3schools.com/postgresql/postgresql_inner_join.php" >INNER JOIN</a>)</h3>
+  <ol>
+    <li>Lista el <b>nombre</b> y <b>apellido</b> de los empleados, su <b>sueldo</b> y el nombre del <b>departamento</b> donde trabaja.</li>
+    <li>Lista el <b>nombre</b> y <b>apellido</b> de los empleados, su <b>fecha de contrato</b> y el nombre del <b>cargo</b>.<br/> <em>Ordena</em> el resultado por la <b>fecha de contrato</b>.</li>
+    <li>Lista el código del empleado, su <b>nombre</b> y <b>apellido</b>, el <b>código</b> del departameto y el nombre del <b>departamento</b> de los empleados <u>que ganen más de 2000€.</u></li>
+    <li>Indica el <b>nombre</b>, <b>apellido</b> y nombre del <b>cargo</b> del empleado <u>más joven</u>.</li>
+    <li>Indica el <b>nombre</b>, <b>apellido</b> y nombre del <b>departamento</b> de los empleados <u>que tengan hijos</u>.</li>
+    <li>Lista <b>todos los datos</b> de los <u>empleados de Contabilidad</u>.</li>
+    <li>Lista el <b>nombre</b> y <b>apellido</b> del empleado, el nombre del <b>cargo</b> y el del <b>departamento</b> de los <u>empleados solteros sin hijos</u></li>
+    <li>Lista los <em>empleados de los departamentos de <u>Compras</u> y <u>Ventas</u></em> sin utilizar el operador IN.</li>
+    <li>Lista los <em>empleados de los departamentos de <u>Compras</u> y <u>Ventas</u></em> utilizando el operador IN.</li>
+    <li>Lista el <b>nombre</b> y <b>apellido</b> del empleado, el nombre del <b>cargo</b> y del <b>departamento</b> <u>de aquellas personas que tienen más de 20 años en la empresa</u>. <em>Ordena</em> el resultado en primer lugar por el <b>departamento </b> (en orden ascendente) y en segundo lugar por el <b title="tienes que calcularlo">tiempo trabajado</b> (en orden descendente)</li>
+    <li>Lista <b>nombre</b> y <b>apellido</b>, <b>edad</b>, nombre del <b>cargo</b>, nombre del <b>departamento</b> de los <u>empleados Solteros, Divorciados o Viudos</u> que tengan <u>más de un hijo</u>.</li>
+  </ol>
+
+  <h3 class="text-lg text-red-700">
+    Composición externa (
+      <a target="_blank" rel="noreferrer noopener" href="https://www.w3schools.com/postgresql/postgresql_left_join.php">LEFT JOIN</a>, <a target="_blank" rel="noreferrer noopener" href="https://www.w3schools.com/postgresql/postgresql_right_join.php">RIGHT JOIN</a>)
+  </h3>
+  <ol start="12">
+    <li>Lista <b>todos departamentos</b> registrados que existen en la base de datos, junto con el código, <b>nombre</b> y <b>apellido</b> del empleado que tiene cada uno de ellos. <em>El listado deberá mostrar también aquellos departamentos que no tienen empleados asociados</em>.</li>
+    <li>Lista <b>todos cargos</b> registrados que existen en la base de datos, junto con el <b>nombre</b> y <b>apellido</b> del empleado, la <b>edad</b> y <b>estado civil</b> que tiene cada empleado. <em>El listado deberá mostrar también aquellos cargos que no tienen empleados asociados</em>.</li>
+    <li>Lista los <b>departamentos</b> sin empleados asociados.</li>
+    <li class="mt-8">¿Se puede asignar a un empleado un cargo que no esté registrado en la tabla de cargos? <em>Justifica tu respuesta</em>.</li>
+  </ol>
+
+</body>
+
+</html>

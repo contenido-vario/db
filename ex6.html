@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap"
+    rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
+  </script>
+
+  <style type="text/tailwindcss">
+    @import "tailwindcss"; 
+    /* Esto carga todo el framework */
+
+    /* Variables de configuración */
+    @theme {
+      --font-sans: "Inclusive Sans", ui-sans-serif, system-ui, sans-serif;
+      --color-brand: #ff4500;
+    }
+
+    @layer base {
+      :root {
+        @apply text-sm;
+        line-height: 1.5;
+      }
+      p { @apply mb-1 }
+
+      button {
+        @apply rounded-md bg-slate-200 border-1 border-slate-400 px-4 py-1 my-1 text-sm cursor-pointer disabled:opacity-50
+      }      
+      
+      blockquote {
+        @apply mx-8 p-2 bg-slate-100
+      }
+
+      ol { @apply list-decimal list-outside ml-6 mb-4 }
+
+      ul { @apply list-[circle] list-outside ml-6 mb-4}
+      
+      kbd, code, a { @apply text-blue-800 }
+
+      a { @apply border-b-1 }
+
+      input, select { @apply border-1 px-2 }
+
+      hr { @apply my-3 }
+
+      td, th { @apply border border-b-blue-200 pl-1.5}
+    }
+  </style>
+
+  <link rel="shortcut icon" href="./img/rt.ico" type="image/svg">
+  <title>GROUP BY</title>
+</head>
+
+<body class="container mx-auto w-5/6 pb-10">
+  <header>
+    <h1 class="font-bold text-2xl text-red-700 mb-4">Realización de consultas agrupadas</h1>
+  </header>
+  <h2 class="mt-4 mb-1 text-lg text-slate-400 font-bold">
+    Referencias:
+  </h2>
+  <ul>
+    <li>
+      SQL 
+      <a
+        target="_blank"
+        rel="noopener"
+        href="https://www.w3schools.com/postgresql/postgresql_count.php">
+          COUNT()
+      </a>
+      <a
+        target="_blank"
+        rel="noopener"
+        href="https://www.w3schools.com/postgresql/postgresql_avg.php">AVG() 
+      </a>and 
+      <a
+        target="_blank"
+        rel="noopener"
+        href="https://www.w3schools.com/postgresql/postgresql_sum.php">SUM() 
+      </a>
+    </li>
+    <li>
+      <a
+        target="_blank"
+        rel="noopener"
+        href="https://www.w3schools.com/postgresql/postgresql_min_max.php">SQL MIN() and MAX()
+      </a>
+    </li>
+    <li>
+      <a
+        target="_blank"
+        rel="noopener"
+        href="https://www.w3schools.com/postgresql/postgresql_groupby.php">
+        SQL GROUP BY
+      </a>
+    </li>
+    <li>
+      <a
+        target="_blank"
+        rel="noopener"
+        href="https://www.w3schools.com/postgresql/postgresql_orderby.php">
+        SQL ORDER BY
+      </a>
+    </li>
+    <li>
+      <a
+        target="_blank"
+        rel="noopener"
+        href="https://www.w3schools.com/postgresql/postgresql_having.php">
+        SQL HAVING Clause
+      </a>
+    </li>
+  </ul>
+  <hr>
+  <ol>
+    <li>Calcula el <b>número total de empleados</b> que hay en la tabla empleado.</li>
+    <li>Calcula el <b>número total de departamentos</b> que hay en la tabla departamento.</li>
+    <li>Calcula la <b>media de sueldo de todos los empleados</b>.</li>
+    <li>Indica quién es el <b>empleado más joven</b>.</li>
+    <li class="mb-4">Indica quién es el <b>empleado menos joven</b>.</li>
+    <li>Calcula el <b>número total de empleados por estado civil</b>.</li>
+    <li>Muestra el número de empleados que han ingresado cada año a la empresa</li>
+    <li>Lista el nombre y el precio del producto más caro.</li>
+    <li>Calcula la suma de los salarios de los empleados por departamento.</li>
+    <li>Calcula la suma de los salarios de los empleados por sexo.</li>
+    <li>Calcula el número de empleados que son Asistentes.</li>
+    <li>Calcula la media de hijos de los empleados por sexo y estado civil</li>
+    <li>Calcula el sueldo más bajo de los Analistas.</li>
+    <li>Calcula el sueldo más alto de los Analistas.</li>
+    <li class="mb-4">Muestra el sueldo máximo, sueldo mínimo, sueldo promedio y el número total de empleados por cargo.</li>
+
+    <li class="mb-4">Muestra el sueldo máximo, sueldo mínimo, sueldo promedio y el número total de empleados por departamento, ordenando de forma descendente por el sueldo promedio.</li>
+    <li>Muestra la edad máxima, edad mínima, edad promedio y el número total de empleados de los departamentos que tienen una edad promedio superior a los 45 años.</li>
+    <li>Calcula el número de empleados que tienen un sueldo mayor o igual a 1800€.</li>
+    <li>Calcula el número de empleados que tienen una edad menor o igual a 28 años.</li>
+    <li>Lista los nombres de los departamentos cuyos empleados tienen una edad promedio mayor o igual a 35 años.</li>
+    <li>Devuelve un listado con los nombres de los cargos que tienen 5 o más empleados.</li>
+    <li class="mb-4">Devuelve un listado con los nombres de los departamentos donde el promedio de edad sea superior 40 años.</li>
+    <li class="mb-4">Muestra el número total de empleados que tiene cada departamento. <br>
+      El listado también debe incluir los departamentos que no tienen ningún empleado. El resultado mostrará dos columnas, una con el nombre del departamento y otra con el número de empleados que tiene. Ordena el resultado descendentemente por el número de empleados.</li>
+    <li>Explica las diferencias entre las cláusulas WHERE y HAVING, y cuándo utilizar cada una de ellas.</li>
+  </ol>
+ 
+
+</body>
+
+</html>

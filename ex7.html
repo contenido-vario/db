@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap"
+    rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
+  </script>
+
+  <style type="text/tailwindcss">
+    @import "tailwindcss"; 
+    /* Esto carga todo el framework */
+
+    /* Variables de configuración */
+    @theme {
+      --font-sans: "Inclusive Sans", ui-sans-serif, system-ui, sans-serif;
+      --color-brand: #ff4500;
+    }
+
+    @layer base {
+      :root {
+        @apply text-sm;
+        line-height: 1.5;
+      }
+      p { @apply mb-1 }
+
+      button {
+        @apply rounded-md bg-slate-200 border-1 border-slate-400 px-4 py-1 my-1 text-sm cursor-pointer disabled:opacity-50
+      }      
+      
+      blockquote {
+        @apply mx-8 p-2 bg-slate-100
+      }
+
+      ol { @apply list-decimal list-outside ml-6 mb-4 }
+
+      ul { @apply list-[circle] list-outside ml-6 mb-4}
+      
+      kbd, code, a { @apply text-blue-800 }
+
+      a { @apply border-b-1 }
+
+      input, select { @apply border-1 px-2 }
+
+      hr { @apply my-3 }
+
+      td, th { @apply border border-b-blue-200 pl-1.5}
+    }
+  </style>
+
+  <link rel="shortcut icon" href="./img/rt.ico" type="image/svg">
+  <title>VIEWS</title>
+</head>
+
+<body class="container mx-auto w-5/6 pb-10">
+  <header>
+    <h1 class="font-bold text-2xl text-red-700 mb-4">
+      VISTAS / VIEWS
+    </h1>
+  </header>
+  <!-- https://dev.to/sushialii/you-should-start-creating-a-view-in-supabase-4ahj -->
+  <p class="mb-4">Las vistas en Supabase son consultas SQL predefinidas que actúan como tablas virtuales, permitiendo simplificar consultas complejas, combinar múltiples tablas y aplicar filtros sin alterar la estructura de datos subyacente.  Se crean mediante el Editor SQL en el panel de control usando la sintaxis <code>CREATE VIEW</code> y pueden exponerse automáticamente a través de las APIs REST y GraphQL generadas por Supabase.</p>
+
+  <p class="mb-4">Las vistas no heredan las reglas de seguridad a nivel de fila (RLS) de las tablas originales.<br>
+  Para garantizar que la seguridad RLS se aplique a la vista, debes especificar la opción <code>security_invoker = true</code> durante su creación o alteración, asegurando que los usuarios solo accedan a los datos autorizados según las políticas definidas. </p>
+  
+  <p class="mb-4">Para crear vistas en Supabase, se utiliza la sentencia <code>CREATE VIEW</code> en el editor SQL del panel de control, definiendo la consulta que deseas guardar como una tabla virtual. La sentencia <code>CREATE VIEW</code> se escribe seguida del nombre deseado y la consulta <code>SELECT</code>. Ejemplo:</p>
+
+  <blockquote>
+    <code>
+      <span class="text-red-700">CREATE VIEW</span> vista_ejemplo <span class="text-red-700">AS</span>
+      <br>
+      <span class="text-red-700">SELECT</span> nombre, edad<br>
+      <span class="text-red-700">FROM</span> usuarios;
+    </code>
+  </blockquote>
+
+  <p class="my-4">Para aplicar la seguridad RLS a una vista, debes usar la opción <code>security_invoker = true</code>:</p>
+
+  <blockquote>
+    <code>
+      <span class="text-red-700">CREATE VIEW</span> vista_ejemplo 
+      <span class="text-red-700">WITH</span> (security_invoker = true)
+      <span class="text-red-700">AS</span>
+      <br>
+      <span class="text-red-700">SELECT</span> nombre, edad<br>
+      <span class="text-red-700">FROM</span> usuarios;
+    </code>
+  </blockquote>  
+
+  <h2  class="mt-6 mb-4 text-lg text-slate-400 font-bold">
+    Vistas Materializadas
+  </h2>
+
+  <p class="my-4">Las vistas materializadas permiten mejorar el rendimiento en consultas complejas o con grandes volúmenes de datos, ya que almacenan físicamente los resultados.</p>
+
+  <p class="my-4">Las vistas materializadas requieren actualización manual o programada para mantener los datos sincronizados con las tablas base:</p>
+
+  <blockquote>
+    <code>
+      <span class="text-red-700">CREATE</span> MATERIALIZED 
+      <span class="text-red-700">VIEW</span> vista_ejemplo 
+      <span class="text-red-700">AS</span>
+      <br>
+      <span class="text-red-700">SELECT</span> nombre, edad<br>
+      <span class="text-red-700">FROM</span> usuarios;
+    </code>
+  </blockquote>    
+
+  <p class="my-4">Para actualizar una vista materializada, se utiliza la sentencia <code>REFRESH MATERIALIZED VIEW</code>:</p>
+
+  <h2  class="mt-6 mb-4 text-lg text-slate-400 font-bold">
+    Ejercicios
+  </h2>
+<ol>
+	<li>Calcula el número total de empleados que hay en la tabla empleado. <br/>Guarda la consulta como una VISTA que llamarás <b>numempleados</b></li>
+	<li>Utilizando las tablas empleado y la vista creada en el punto 1, realizar una consulta que muestre el porcentaje de empleados por estado civil</li>
+	<li>Utilizando las tablas empleado y departamento y la vista creada en el punto 1, realizar una consulta que muestre el porcentaje de empleados por departamento.</li>
+	<li>Utilizando las tablas empleado y la vista creada en el punto 1, realizar una consulta que muestre el porcentaje de empleados con y sin hijos. 
+	(Función <a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/15/functions-conditional.html#FUNCTIONS-CASE">CASE</a>)</li>
+	<li>Calcula el promedio de sueldo por cargo. <br/>Guarda la consulta como una VISTA que llamarás <b>sueldo_promedio_cargo</b>.<br>
+	Incluye en la misma, tanto el código como el nombre del cargo</li>
+	<li>Utilizando la tabla empleado y la vista creada en el punto anterior, 
+	realizar una consulta que muestre el nombre y apellido de cada empleado y si su sueldo está por encima o por debajo del promedio. </li>
+	<li>Calcula el promedio de sueldo por departamento.<br>Guarda la consulta como una VISTA que llamarás <b>sueldo_promedio_dpto</b>.<br>
+	Incluye en la misma, tanto el código como el nombre del departamento</li>
+</ol>	
+</body>
+
+</html>
