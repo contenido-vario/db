@@ -1,0 +1,37 @@
+<h2>Ejercicio 9. Triggers, Funciones y Procedimientos</h2>
+<p>Referencias:<br>
+<a target="_blank" href="https://manuales.guebs.com/mysql-5.0/triggers.html">Triggers</a><br> 
+<a target="_blank" href="https://manuales.guebs.com/mysql-5.0/stored-procedures.html">Funciones y Procedimientos</a>
+</p>
+
+<p>TRIGGERS</p>
+<p>Realiza los siguientes triggers a la tabla empleado</p>
+<ol>
+	<li>Que no permita ingresar una fecha mayor a la del día de mañana en la fecha de contrato</li>
+	<li>Que no permita registrar empleados menores de 16 años</li>
+	<li>Que antes de eliminar un empleado, lo copie en una tabla llamada historicoempleado.
+	Deberás crear previamente esta tabla con los mismos campos de la tabla empleado</li>
+	<li>Que el sueldo de un empleado no supere los 6000€ ni sea menor a 500€, de ser así que escriba los topes en la tabla de empleados. Esto no puede suceder ni al insertar un nuevo empleado ni al actualizarlo</li>
+</ol>
+<p>FUNCIONES</p>
+<p>Realiza las siguientes funciones:</p>
+<ol>
+	<li><b>Edad: </b> Recibe una fecha de nacimiento como parámetro de entrada y muestra la edad (número entero)</li>
+	<li><b>Iniciales:</b>Los parámetros de entrada deberán ser nombre y apellido y regresar las iniciales separadas por un punto</li>
+	<li><b>Tiempo_Contratado:</b> Recibe la fecha de contrato y regresa el tiempo en años, meses y dias. Ejemplo: 2 años, 5 meses y 3 días.</li>
+	<li><b>Nombre_Completo:</b>Los parámetros de entrada deberán ser nombre y apellido los cuales regresará concatenados</li>
+	<li>Realizar una consulta para probar todas estas funciones. La consulta deberá tener los siguientes campos: pkempleado, nombre_completo, iniciales, edad y tiempo_Contratado</li>
+</ol>
+<p>PROCEDIMIENTOS</p>
+<p>Desarrolla los siguientes procedimientos almacenados:</p>							
+<ol>
+	<li>Indicar el id de un Empleado y que me de todos sus datos, incluyendo edad y tiempo contratado</li>
+	<li>Indicar idDepartamento y que me devuelva los empleados que trabajan en el mismo.</br>
+	Si no hay empleados, que escriba un mensaje: 'El departamento no tiene empleados'</li>
+	<li>Indicar idCargo y que me devuelva nombre del cargo y sueldo promedio del cargo.</li>
+	<br/>
+	<li>Explica con tus propias palabras la diferencia entre Triggers, Procedimientos y Funciones, y cuando (para qué) utilizarías cada uno de ellos</li>
+	<li>Qué es un delimitador, para qué sirve, cómo se utiliza y cuál de estos objetos de la base de datos lo utiliza</li>
+</ol>
+<br/>
+<hr/>
