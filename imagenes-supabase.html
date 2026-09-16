@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es-Es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap">
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">    
+  </script>
+  <style type="text/tailwindcss">
+    @import "tailwindcss"; 
+
+    @theme {
+      --font-sans: "Inclusive Sans", ui-sans-serif, system-ui, sans-serif;
+      --color-brand: #ff4500;
+    }
+
+    @layer base {
+      :root { @apply text-sm; line-height: 1.7;}
+      p { @apply mb-2 text-lg}
+      button { @apply rounded-md bg-slate-200 border-1 border-slate-400 px-4 py-1 my-1 text-sm cursor-pointer disabled:opacity-50}
+      details { @apply mb-0.5 py-0.5 text-slate-800 }
+      details p { @apply mb-0.5 text-base }
+      summary { @apply py-1 text-base bg-slate-100 text-black font-bold }
+      blockquote { @apply mx-8 p-2 bg-slate-200 }
+      ol { @apply list-decimal list-outside ml-6 mb-4 }
+      ul { @apply list-[circle] list-outside ml-6 mb-4 }
+      li { @apply mb-1 }     
+      kbd, code, a { @apply text-blue-800 }
+      a { @apply border-b-1 }
+      input, select { @apply border-1 px-2 }
+      hr { @apply my-3 }
+      td, th { @apply border-black border p-1.5 }
+      h1, h2, h3 { @apply font-bold }
+      h1 {@apply text-2xl}
+      h2 {@apply text-xl my-4 text-red-700}
+      h3 {@apply text-lg text-cyan-600}
+    }
+  </style>
+
+  <link rel="shortcut icon" href="questions.svg" type="image/svg">
+  <title>Imagenes Supabase</title>
+</head>
+
+<body class="container mx-auto w-5/6 pb-10 text-slate-900">
+
+<h1 class="text-lg md:text-2xl text-center my-4 text-slate-950">
+  Guardar Imágenes en Supabase
+</h1>
+
+<p>Para guardar imágenes en Supabase y vincularlas a la base de datos, no se recomienda almacenar directamente las mismas en una tabla como datos binarios, por razones de peso y velocidad, sino subir el archivo a <code>Supabase Storage</code> y guardar únicamente la URL pública o la ruta (path) en la base de datos.</p>
+
+<h2>Flujo de Trabajo</h2>
+<ol>
+  <li><b>Crear un Bucket</b>: Configura un espacio de almacenamiento en Supabase (ej. avatars o product-images).</li>
+  <li><b>Subir el Archivo (Storage)</b>: Se sube la imagen al bucket recién creado.
+  <!-- Desde el FrontEnd (JavaScript, React, Flutter, etc.), se utiliza para ello la API de Supabase Storage. -->
+  </li>
+  <li><b>Obtener la URL</b>: Copiar la URL pública del archivo subido.</li>
+  <li>Guardar la URL en el registro de la tabla de la Base de Datos: Insertas un registro en la tabla de tu base de datos guardando esa URL en una columna de tipo <code>text</code>.</li>
+</ol>
+
+<h3>1. Crear un Bucket en Supabase Storage:</h3>
+
+<ul>
+  <li>
+    <p>Entrar al Panel de Control de Supabase y luego en la sección <code>Storage</code>.</p>
+    <figure><img width="80%" src="./img/img-supabase1.png" alt="Supabase Storage"></figure>
+  </li>
+  <li><p>Hacer clic en <b><code>+ New bucket</code></b>.</p></li>
+  <li><p>Darle un nombre (ejemplo: <b>productos</b>).</p></li>
+  <li>
+    <p>Marcar la opción <code>Public</code> si se desea que las imágenes se puedan ver mediante una URL directa.</p>
+    <figure><img width="40%" src="./img/img-supabase2.png" alt="Opción Public, Supabase"></figure>
+  </li>
+  <li>Subir la imagen con la SDK ( <em>Software Development Kit</em> ) de Supabase:</li>  
+</ul>
+
+<h3>2. <b>Obtener la URL</b>: Copiar la URL pública del archivo subido.</h3>
+<figure><img width="80%" src="./img/img-supabase3.png" alt="Opción Public, Supabase"></figure>
+
+
+</body>
+</html>
