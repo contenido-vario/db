@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Desactiva la caché del archivo HTML -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap"
+    rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
+  </script>
+
+  <style type="text/tailwindcss">
+    @import "tailwindcss"; 
+    /* Esto carga todo el framework */
+
+    /* Variables de configuración */
+    @theme {
+      --font-sans: "Inclusive Sans", ui-sans-serif, system-ui, sans-serif;
+      --color-brand: #ff4500;
+    }
+
+    @layer base {
+      :root {
+        @apply text-sm;
+        line-height: 1.5;
+      }
+      p { @apply mb-1 }
+
+      button {
+        @apply rounded-md bg-slate-200 border-1 border-slate-400 px-4 py-1 my-1 text-sm cursor-pointer disabled:opacity-50
+      }      
+      
+      blockquote {
+        @apply mx-8 p-2 bg-slate-100
+      }
+
+      ol { @apply list-decimal list-outside ml-6 mb-4 }
+
+      ul { @apply list-[circle] list-outside ml-6 mb-4}
+      
+      kbd, code, a { @apply text-blue-800 }
+
+      a { @apply border-b-1 }
+
+      input, select { @apply border-1 px-2 }
+
+      hr { @apply my-3 }
+
+      td, th { @apply border border-b-blue-200 pl-1.5}
+    }
+  </style>
+
+  <link rel="shortcut icon" href="./img/rt.ico" type="image/svg">
+  <title>CRUD</title>
+</head>
+
+<body class="container mx-auto w-5/6 pb-10">
+  <header>
+    <h1 class="font-bold text-2xl text-red-700 mb-4">
+      EJERCICIOS DE ACTUALIZACIÓN Y ELIMINACIÓN DE REGISTROS (+CRUD)
+    </h1>
+  </header>
+  <p class="mb-4"></p>
+  
+
+  <ol>
+	<li>En la tabla <code>empleados</code>, <b>actualizar</b> (<code>UPDATE</code>) el campo <b>fk_departamento</b> al código de cargo correspondiente al departamento de <code>Ventas</code>  para todos los empleados que cumplan con los siguientes criterios: 
+    <ul>
+      <li>Estado Civil: <b>Soltero</b> o <b>Divorciado</b></li>
+      <li><b>Sin hijos</b></li>
+      <li>Departamento: <b>Compras</b></li>
+    </ul>
+  </li>
+
+  <li>Agregar (<code>ALTER TABLE</code>) un nuevo campo denominado <b>fecha_baja</b> a la tabla <code>empleados</code> </li>
+
+  <li>Actualizar (<code>UPDATE</code>) el campo <b>fecha_baja</b>  con la fecha actual, para todos los registros de la tabla <code>empleados</code> que cumplan con los siguientes criterios:
+    <ul>
+      <li>Año de Contratación: Anterior a <b>1996</b></li>
+      <li>Sueldos: Menores a <b>20.000,00€</b></li>
+      <li>Cargos: (que <u>no sean</u> <b>Ejecutivos</b>, <b>Gerentes</b> o <b>Vicepresidentes</b>)</li>
+    </ul>
+  </li>
+
+  <li>Agregar (<code>ALTER TABLE</code>) un nuevo campo denominado <b>sueldo_anterior</b> a la tabla <code>empleados</code> y actualizar (<code>UPDATE</code>) este nuevo campo con el valor del <b>sueldo actual</b>, para todos los registros de la tabla <code>empleados</code>. </li>  
+
+  <li>Subir el sueldo (<code>UPDATE</code>) a todos los empleados, utilizando los siguientes criterios:
+    <ul>
+      <li>Empleados del Departamento de <b>Ventas</b>: <b>10%</b> aumento</li>
+      <li>Empleados del Departamento de <b>Informática</b>: <b>20%</b> aumento</li>
+      <li>Resto de empleados: <b>15%</b> aumento</li>
+    </ul>
+  </li>
+
+  <li>Agregar (<code>ALTER TABLE</code>) un nuevo campo denominado <b>comision</b> a la tabla <code>empleados</code> </li>
+
+  <li  class="mt-2">Actualizar (<code>UPDATE</code>) el campo <b>comision</b>  con <b>10%</b>, para todos los empleados que trabajen en el departamento de <b>Ventas</b>.</li>
+
+  <li class="mt-2">Agregar (<code>INSERT</code>) el departamento <b>Desarrollo Web</b> a la tabla <code>departamentos</code> </li>
+
+  <li class="mt-2">Cambiar (<code>UPDATE</code>) a aquellos empleados que trabajen en el departamento de <b>Informática</b> y que tengan los cargo <b>Analistas</b> o <b>Programador</b> al nuevo departamento.</li>
+
+  <li class="mt-2">Agregar (<code>INSERT</code>) los cargos <b>Desarrollador FrontEnd</b>, <b>Desarrollador BackEnd</b> y <b>Desarrollador FullStack</b> a la tabla <code>cargos</code> </li>  
+
+  <li class="mt-2">Asignar los nuevos cargos a los empleados del nuevo departamento de <b>Desarrollo Web</b> según los criterios siguientes:
+     <ul>
+      <li><b>Desarrollador FrontEnd</b>: con un sueldo inferior a <b>25.000€</b></li>
+      <li><b>Desarrollador BackEnd</b>: con un sueldo entre a <b>25.000€</b> y <b>30.000€</b></li>
+      <li><b>Desarrollador FullStack</b>: con un sueldo superior a <b>30.000€</b></li>
+    </ul>
+  </li>  
+
+  <li class="mt-2">Cambiar (<code>UPDATE</code>) el nombre del cargo <b>Analista</b> a <b>Analista de RRHH</b>.</li>
+
+
+</ol>
+
+</body>
+
+</html>
