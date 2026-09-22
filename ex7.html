@@ -127,10 +127,10 @@
 	(Función <a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/15/functions-conditional.html#FUNCTIONS-CASE">CASE</a>)</p>
 	<blockquote>
 		<code>
-			SELECT d.descendencia, count(d.*) AS numeroempleados, t.totalempleados, (count(d.*)::float/totalempleados::float*100) AS porcentaje_hijos<br>
+			SELECT d.descendencia, count(d.*) AS numeroempleados, t.totalempleados, (count(d.*)<mark>::float</mark>/totalempleados<mark>::float</mark>*100) AS porcentaje_hijos<br>
 			FROM descendientes AS d, numempleados AS t<br>
 			GROUP BY d.descendencia, t.totalempleados;
-		</code>
+		</code><br>
 		<p>En Postgres para dividir dos enteros y obtener un decimal tenemos que convertir los enteros a números decimales (float). 
 		Para ello se coloca a continuación del nombre del campo <code>::float</code></p>
 	</blockquote>
