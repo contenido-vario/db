@@ -119,7 +119,13 @@
     Ejercicios
   </h2>
 <ol>
-	<li>Calcula el número total de empleados que hay en la tabla empleado. <br/>Guarda la consulta como una VISTA que llamarás <b>numempleados</b></li>
+	<li>
+		Calcula el número total de empleados que hay en la tabla empleado. <br/>Guarda la consulta como una VISTA que llamarás <b>numempleados</b>
+		<blockquote><code>
+			CREATE VIEW numempleados AS<br>SELECT COUNT(*) AS totalempleados<br>FROM empleado;
+		</code></blockquote>
+	</li>
+	
 	<li>Utilizando las tablas empleado y la vista creada en el punto 1, realizar una consulta que muestre el porcentaje de empleados por estado civil</li>
 	<li>Utilizando las tablas empleado y departamento y la vista creada en el punto 1, realizar una consulta que muestre el porcentaje de empleados por departamento.</li>
 	<li>
