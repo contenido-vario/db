@@ -122,8 +122,21 @@
 	<li>Calcula el número total de empleados que hay en la tabla empleado. <br/>Guarda la consulta como una VISTA que llamarás <b>numempleados</b></li>
 	<li>Utilizando las tablas empleado y la vista creada en el punto 1, realizar una consulta que muestre el porcentaje de empleados por estado civil</li>
 	<li>Utilizando las tablas empleado y departamento y la vista creada en el punto 1, realizar una consulta que muestre el porcentaje de empleados por departamento.</li>
-	<li>Utilizando las tablas empleado y la vista creada en el punto 1, realizar una consulta que muestre el porcentaje de empleados con y sin hijos. 
-	(Función <a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/15/functions-conditional.html#FUNCTIONS-CASE">CASE</a>)</li>
+	<li>
+		<p>Utilizando las tablas empleado y la vista creada en el punto 1, realizar una consulta que muestre el porcentaje de empleados con y sin hijos. 
+	(Función <a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/15/functions-conditional.html#FUNCTIONS-CASE">CASE</a>)</p>
+	<blockquote>
+		<code>
+			SELECT d.descendencia, count(d.*) AS numeroempleados, t.totalempleados, (count(d.*)::float/totalempleados::float*100) AS porcentaje_hijos<br>
+			FROM descendientes AS d, numempleados AS t<br>
+			GROUP BY d.descendencia, t.totalempleados;
+		</code>
+		<p>En Postgres para dividir dos enteros y obtener un decimal tenemos que convertir los enteros a números decimales (float). 
+		Para ello se coloca a continuación del nombre del campo <code>::float</code></p>
+	</blockquote>
+	
+	
+	</li>
 	<li>Calcula el promedio de sueldo por cargo. <br/>Guarda la consulta como una VISTA que llamarás <b>sueldo_promedio_cargo</b>.<br>
 	Incluye en la misma, tanto el código como el nombre del cargo</li>
 	<li>Utilizando la tabla empleado y la vista creada en el punto anterior, 
