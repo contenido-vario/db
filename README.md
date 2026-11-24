@@ -1,2 +1,2 @@
 # db
-Material Base de Datos
+Intro Base de Datos con PostGres | Supabase
